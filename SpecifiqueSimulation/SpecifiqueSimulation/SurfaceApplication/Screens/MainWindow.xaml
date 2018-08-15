@@ -1,0 +1,135 @@
+﻿<s:SurfaceWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="SurfaceApplication.Screens.MainWindow"
+    mc:Ignorable="d" x:Name="MainScreen"
+    xmlns:local="clr-namespace:SurfaceApplication.UserControls"
+    xmlns:my="clr-namespace:SurfaceApplication.UserControls"
+    xmlns:Custom="http://schemas.microsoft.com/surface/2008"
+    Title="Specifique Simulation" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None"
+    ResizeMode="NoResize">
+
+    <Grid>
+        <local:Gameboard x:Name="gameboard" />
+        <Border Height="73" Width="500" Background="#FF1A1A1A" BorderThickness="2,2,0,0" BorderBrush="#FFFF7B24"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" CornerRadius="307, 0, 0,0 ">
+            <local:Clock x:Name="clock" Margin="10,5,0,0" />
+        </Border>
+        <local:Inventory VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,10,2,70" x:Name="inventory" />
+        <local:Notifications Margin="10,0,0,70" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                             Visibility="Collapsed" x:Name="viewNot" />
+        <local:SendMessage Margin="10,0,0,70" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                           Visibility="Collapsed" x:Name="viewSend" />
+        <local:Inbox Margin="10,0,0,70" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="Hidden"
+                     x:Name="inbox" />
+
+        <Border Height="300" Width="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,20">
+            <Custom:ScatterView Foreground="{x:Null}" VerticalAlignment="bottom">
+                <Custom:ScatterViewItem Width="720" CanRotate="False" CanScale="False" Background="Transparent"
+                                        Center="360,530" Deceleration="10" Orientation="0" x:Name="menuBar"
+                                        ContainerManipulationCompleted="MenuBarWindow_ContainerManipulationCompleted">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="73" />
+                            <RowDefinition Height="500" />
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="#FFFF7B24" BorderThickness="0,2,2,0" Background="#FF1A1A1A" Width="720"
+                                Height="73" CornerRadius="0, 340, 0,0 " HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom" Padding="0,0,0,0">
+                            <DockPanel>
+                                <s:SurfaceButton Click="ShowMes_Click">
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.0" />
+                                    </Button.Background>
+                                    <Image Source="/SurfaceApplication;component/Images/SendMessage.png" Width="70"
+                                           Height="54" Margin="-7,10,0,0" />
+                                </s:SurfaceButton>
+
+                                <s:SurfaceButton x:Name="showInbox" Click="ShowMes_Click">
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.0" />
+                                    </Button.Background>
+                                    <Image Source="/SurfaceApplication;component/Images/Inbox.png" Width="70"
+                                           Height="54" />
+                                </s:SurfaceButton>
+
+                                <s:SurfaceButton Name="showNotif" Click="ShowMes_Click">
+                                    <Button.Background>
+                                        <SolidColorBrush Opacity="0.0" />
+                                    </Button.Background>
+                                    <Image Source="/SurfaceApplication;component/Images/Notification.png" Width="70"
+                                           Height="54" />
+                                </s:SurfaceButton>
+
+                                <local:YourMoneyStream x:Name="viewStream" Margin="0,15,50,0"
+                                                       HorizontalAlignment="Right" Height="50" Width="400" />
+                            </DockPanel>
+                        </Border>
+                        <Border Grid.Row="1" Background="#FF1A1A1A" BorderBrush="#FFFF7B24" BorderThickness="0,0,2,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*" />
+                                    <RowDefinition Height="50*" />
+                                </Grid.RowDefinitions>
+                                <my:Exit Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,220"
+                                         VerticalAlignment="Bottom"
+                                         BorderBrush="Black" BorderThickness="2" />
+                                <Image Source="/SurfaceApplication;component/Images/SpecifiqueLogo.png" Width="100"
+                                       Height="54"
+                                       Grid.Row="1" Margin="490,0,0,234" />
+                                <TextBlock Text="Descending group values:" FontSize="16" Grid.Row="0"
+                                           Foreground="#FFFF7B24" Margin="115,40,0,0" />
+                                <local:Values x:Name="viewValues" Margin="10,60,0,0" Height="450" Grid.Row="0"
+                                              Width="500" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Custom:ScatterViewItem>
+            </Custom:ScatterView>
+        </Border>
+        <s:ScatterView Foreground="{x:Null}">
+            <s:ScatterViewItem Height="500" Width="400" CanRotate="True" CanScale="False" Background="{x:Null}"
+                               Center="640,860" Orientation="0" x:Name="sviHistoryWindow" Visibility="Hidden"
+                               ContainerManipulationCompleted="SviHistoryWindow_ContainerManipulationCompleted">
+                <local:MessageHistory x:Name="messageHistory" />
+            </s:ScatterViewItem>
+            <s:ScatterViewItem Height="550" Width="380" CanRotate="True" CanScale="False" Background="{x:Null}"
+                               Center="960,540" Orientation="0" x:Name="sviMarketWindow" Visibility="Hidden"
+                               ContainerManipulationCompleted="SviMarketWindow_ContainerManipulationCompleted">
+                <my:Market x:Name="viewMarket" />
+            </s:ScatterViewItem>
+            <s:ScatterViewItem Width="500" CanRotate="True" CanScale="False" Background="{x:Null}"
+                               Center="960,540" Orientation="0" x:Name="sviAssetWindow" Visibility="Hidden"
+                               ContainerManipulationCompleted="SviAssetWindow_ContainerManipulationCompleted">
+                <my:Asset BorderBrush="Gray" BorderThickness="2" x:Name="assetWindow" />
+            </s:ScatterViewItem>
+            <s:ScatterViewItem Height="300" Width="500" CanRotate="True" CanScale="False" Background="{x:Null}"
+                               Center="960,200" Orientation="0" x:Name="sviItemWindow" Visibility="Hidden"
+                               ContainerManipulationCompleted="SviItemWindow_ContainerManipulationCompleted">
+                <my:Item BorderBrush="Gray" BorderThickness="2" x:Name="itemWindow" />
+            </s:ScatterViewItem>
+        </s:ScatterView>
+
+        <Rectangle StrokeDashArray="2.0 2.5 0.0" Stroke="#FFFF7B24" StrokeThickness="2" RadiusX="10" RadiusY="10"
+                   x:Name="rekt"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="120" Width="130"
+                   MouseLeftButtonDown="Handle_MouseDown" />
+        <TextBlock Foreground="#FFFF7B24" Text="Drop Views Here To Hide Them" Width="100" TextWrapping="Wrap"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,70,0,0" />
+        <s:SurfaceButton x:Name="btnViews" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Width="110"
+                         Content="Show Views" Foreground="#FFFF7B24" Background="Transparent" Click="ShowAllViews"
+                         Margin="7,0,0,0" />
+
+        <s:SurfaceButton x:Name="btnViewsHide" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20"
+                         Width="110" Margin="7,0,0,0"
+                         Content="Hide Views" Foreground="#FFFF7B24" Background="Transparent" Click="HideAll"
+                         Visibility="Collapsed" />
+
+        <my:Pause Visibility="Hidden" x:Name="pauseView" />
+        <my:Start Visibility="Visible" x:Name="startView" />
+    </Grid>
+</s:SurfaceWindow>

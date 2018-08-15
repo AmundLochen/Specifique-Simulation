@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 15.625" name="DBlinq">
+  <DataContextMoniker Name="/DBlinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c5435726-9fd2-430b-b79c-65d9b9ed1000" absoluteBounds="0.75, 7.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBlinqDataContext/asset" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a3b48b99-97cb-45d2-b61b-4db92fd5c3cc" absoluteBounds="0.765, 8.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e85221f-086c-4bde-9d71-bd231c6fc0bd" absoluteBounds="9.75, 0.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/DBlinqDataContext/trade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef44bea4-f97c-4565-a680-2db85105656c" absoluteBounds="9.765, 1.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="65e6f29f-6828-4f17-a2e1-5bcbf927a577" absoluteBounds="3.5, 5.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBlinqDataContext/assetInventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5fc20b35-c9b3-4929-aae8-32ff0727ea88" absoluteBounds="3.515, 6.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a09dc9c2-8ca6-405d-be02-49ba69bdd320" absoluteBounds="3.5, 13.625, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/DBlinqDataContext/assetValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1beea55d-b400-4f12-aa20-6a274252c48c" absoluteBounds="3.515, 14.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a8746ab9-40d1-452a-b66e-3972ad5123e6" absoluteBounds="3.5, 3.625, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBlinqDataContext/cashPerTeam" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b2505e5-0335-4ec7-8b2a-c2ba8d934970" absoluteBounds="3.515, 4.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e71eac82-ba94-4f54-92b1-914531a97b08" absoluteBounds="9.75, 5.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBlinqDataContext/gameTime" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2beac33d-a522-4513-aec1-61378b3a29c0" absoluteBounds="9.765, 6.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e72cd2fb-222a-491b-b2f2-450eb91ee6f8" absoluteBounds="3.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBlinqDataContext/item" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e12551de-7569-4a39-a5d4-9a1e1c340766" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d6a3cd3a-3c82-41f3-8d70-7de98dfe5ff6" absoluteBounds="6.5, 4.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBlinqDataContext/itemInventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f20e9a91-6f4b-446b-bc81-505b1ded98bf" absoluteBounds="6.515, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb9f1fcf-bea8-4d69-acab-7648960da962" absoluteBounds="6.5, 2.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBlinqDataContext/itemOnAssetValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2481b4c8-ae31-4962-aaf1-0b85fa15159e" absoluteBounds="6.515, 2.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="94ee8b53-ebfc-4e25-8b48-d551f6ecfbc3" absoluteBounds="6.5, 7.25, 2, 1.7708968098958335">
+      <DataClassMoniker Name="/DBlinqDataContext/itemValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c96277f-c836-4279-ad21-e6020334b2a2" absoluteBounds="6.515, 7.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8b1b78e8-4b1b-40d8-918b-1b155961b673" absoluteBounds="6.75, 9.75, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/DBlinqDataContext/msg" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fab8253e-cd4a-4edb-9fb2-a2b34d58370d" absoluteBounds="6.765, 10.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fbc41d44-f5df-4536-97bc-07a52841d0b8" absoluteBounds="3.5, 10.375, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/DBlinqDataContext/notific" />
+      <nestedChildShapes>
+        <elementListCompartment Id="88021d2c-f03e-43df-a36e-11eb857b8c4f" absoluteBounds="3.515, 10.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="36a3d675-9da1-499b-b6d4-e5582acb306b" absoluteBounds="0.75, 5, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DBlinqDataContext/team" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2fdbec8a-69e4-4392-8333-781166423ecd" absoluteBounds="0.765, 5.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 8.53929768880208); (3.19791666666667 : 8.53929768880208 : JumpStart); (3.36458333333333 : 8.53929768880208 : JumpEnd); (4.5 : 8.53929768880208); (4.5 : 7.32859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/asset/asset_assetInventory" />
+      <nodes>
+        <classShapeMoniker Id="c5435726-9fd2-430b-b79c-65d9b9ed1000" />
+        <classShapeMoniker Id="65e6f29f-6828-4f17-a2e1-5bcbf927a577" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 9.32859537760417); (1.75 : 14.5104484049479); (3.5 : 14.5104484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/asset/asset_assetValue" />
+      <nodes>
+        <classShapeMoniker Id="c5435726-9fd2-430b-b79c-65d9b9ed1000" />
+        <classShapeMoniker Id="a09dc9c2-8ca6-405d-be02-49ba69bdd320" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.65625 : 2.32859537760417); (5.65625 : 5.38064697265625); (6.5 : 5.38064697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/item/item_itemInventory" />
+      <nodes>
+        <classShapeMoniker Id="e72cd2fb-222a-491b-b2f2-450eb91ee6f8" />
+        <classShapeMoniker Id="d6a3cd3a-3c82-41f3-8d70-7de98dfe5ff6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.75121330413662); (3.125 : 7.37621330413662); (3.125 : 2.97679768880208); (5.57291666666667 : 2.97679768880208 : JumpStart); (5.77083583333333 : 2.97679768880208 : JumpEnd); (6.5 : 2.97679768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/asset/asset_itemOnAssetValue" />
+      <nodes>
+        <classShapeMoniker Id="c5435726-9fd2-430b-b79c-65d9b9ed1000" />
+        <classShapeMoniker Id="eb9f1fcf-bea8-4d69-acab-7648960da962" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 1.4999995); (7.5 : 1.4999995); (7.5 : 2.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/item/item_itemOnAssetValue" />
+      <nodes>
+        <classShapeMoniker Id="e72cd2fb-222a-491b-b2f2-450eb91ee6f8" />
+        <classShapeMoniker Id="eb9f1fcf-bea8-4d69-acab-7648960da962" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.6875025 : 2.32859537760417); (5.6875025 : 7.96519653320312); (6.5 : 7.96519653320312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/item/item_itemValue" />
+      <nodes>
+        <classShapeMoniker Id="e72cd2fb-222a-491b-b2f2-450eb91ee6f8" />
+        <classShapeMoniker Id="94ee8b53-ebfc-4e25-8b48-d551f6ecfbc3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.97199625651042); (3.04166666666667 : 5.97199625651042 : JumpStart); (3.20833333333333 : 5.97199625651042 : JumpEnd); (3.5 : 5.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/team/team_assetInventory" />
+      <nodes>
+        <classShapeMoniker Id="36a3d675-9da1-499b-b6d4-e5582acb306b" />
+        <classShapeMoniker Id="65e6f29f-6828-4f17-a2e1-5bcbf927a577" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 5); (1.75 : 4.3124995); (3.04166666666667 : 4.3124995 : JumpStart); (3.20833333333333 : 4.3124995 : JumpEnd); (3.5 : 4.3124995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/team/team_cashPerTeam" />
+      <nodes>
+        <classShapeMoniker Id="36a3d675-9da1-499b-b6d4-e5582acb306b" />
+        <classShapeMoniker Id="a8746ab9-40d1-452a-b66e-3972ad5123e6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.59657348632813); (3.04166666666667 : 5.59657348632812 : JumpStart); (3.20833333333333 : 5.59657348632813 : JumpEnd); (5.60416916666667 : 5.59657348632812 : JumpStart); (5.77083583333333 : 5.59657348632813 : JumpEnd); (6.5 : 5.59657348632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/team/team_itemInventory" />
+      <nodes>
+        <classShapeMoniker Id="36a3d675-9da1-499b-b6d4-e5582acb306b" />
+        <classShapeMoniker Id="d6a3cd3a-3c82-41f3-8d70-7de98dfe5ff6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.16276401652644); (3.06607443490112 : 6.47883845142756 : JumpStart); (3.18392556509888 : 6.59668958162532 : JumpEnd); (3.28125 : 6.69401401652644); (3.28125 : 11.2604484049479); (3.5 : 11.2604484049479)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBlinqDataContext/team/team_notific" />
+      <nodes>
+        <classShapeMoniker Id="36a3d675-9da1-499b-b6d4-e5582acb306b" />
+        <classShapeMoniker Id="fbc41d44-f5df-4536-97bc-07a52841d0b8" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

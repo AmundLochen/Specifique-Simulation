@@ -1,0 +1,50 @@
+﻿<UserControl xmlns:my1="clr-namespace:Microsoft.Surface.Presentation.Controls;assembly=Microsoft.Surface.Presentation"
+             x:Class="SurfaceApplication.UserControls.Gameboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid>
+        <Image Source="/SurfaceApplication;component/Images/world3.jpg" Stretch="Fill" />
+        <my1:SurfaceButton Click="button_Click" Uid="1" Margin="1030,188,199,440" Opacity="0" x:Name="Asia">
+            <Button.Background>
+                <SolidColorBrush Opacity="0.0" />
+            </Button.Background>
+            <Image Source="/SurfaceApplication;component/Images/Asia.png" Width="683" Height="459" />
+        </my1:SurfaceButton>
+        <my1:SurfaceButton Click="button_Click" Uid="5" Margin="594,121,844,597" Opacity="0" x:Name="Europe">
+            <Button.Background>
+                <SolidColorBrush Opacity="0.0" />
+            </Button.Background>
+            <Image Source="/SurfaceApplication;component/Images/Europe.png" Width="481" Height="367" />
+        </my1:SurfaceButton>
+        <my1:SurfaceButton Click="button_Click" Uid="3" Margin="123,177,1262,437" Opacity="0" x:Name="America">
+            <Button.Background>
+                <SolidColorBrush Opacity="0.0" />
+            </Button.Background>
+            <Image Source="/SurfaceApplication;component/Images/North America.png" Width="540" Height="500" />
+        </my1:SurfaceButton>
+        <my1:SurfaceButton Click="button_Click" Uid="2" HorizontalAlignment="Left" Margin="782,467,0,0"
+                           x:Name="Africa" VerticalAlignment="Top" Opacity="0" Height="351" Width="345">
+            <Button.Background>
+                <SolidColorBrush Opacity="0.0" />
+            </Button.Background>
+            <Image Source="/SurfaceApplication;component/Images/Africa.png" Width="332" Height="350" />
+        </my1:SurfaceButton>
+
+        <my1:SurfaceButton Click="button_Click" Uid="6" Margin="1372,629,146,172" Opacity="0" x:Name="Oseania">
+            <Button.Background>
+                <SolidColorBrush Opacity="0.0" />
+            </Button.Background>
+            <Image Source="/SurfaceApplication;component/Images/Australia.png" Width="391" Height="278" />
+        </my1:SurfaceButton>
+        <my1:SurfaceButton Click="button_Click" Uid="4" Margin="478,644,1182,101" Opacity="0" x:Name="SouthAmerica">
+            <Button.Background>
+                <SolidColorBrush Opacity="0.0" />
+            </Button.Background>
+            <Image Source="/SurfaceApplication;component/Images/South America.png" Width="248" Height="333" />
+        </my1:SurfaceButton>
+    </Grid>
+</UserControl>

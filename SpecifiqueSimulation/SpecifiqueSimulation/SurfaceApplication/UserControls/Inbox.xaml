@@ -1,0 +1,304 @@
+﻿<UserControl xmlns:my="clr-namespace:Microsoft.Surface.Presentation.Controls;assembly=Microsoft.Surface.Presentation"
+             x:Class="SurfaceApplication.UserControls.Inbox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:model="clr-namespace:Model;assembly=Model"
+             mc:Ignorable="d"
+             d:DesignHeight="800" Width="400"
+             x:Name="UserControl"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}" Background="Transparent">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="listBoxTemplate">
+            <Border Margin="-6.5,0.5,-8.5,-15" BorderBrush="#FFFF7B24" BorderThickness="0,0,0,4"
+                    Background="#FF1A1A1A" Width="397" MinHeight="80">
+                <StackPanel MouseDown="StackPanel_MouseDown" TouchDown="StackPanel_TouchDown" Background="#FF1A1A1A">
+                    <DockPanel>
+                        <TextBlock FontWeight="Bold" Text="From: " Foreground="#FFFF7B24" Margin="5,0,0,0"
+                                   DockPanel.Dock="Left" HorizontalAlignment="Left" />
+                        <TextBlock Foreground="White" Text="{Binding FromName}" DockPanel.Dock="Left" HorizontalAlignment="Left"/>
+
+                        <TextBlock FontWeight="Bold" Text="To: " Foreground="#FFFF7B24"
+                                   HorizontalAlignment="Center" Margin="37,0,0,0" />
+                        <TextBlock Foreground="White" Text="{Binding ToName}" HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="{Binding Time, StringFormat=dd.MM.yyyy}" Foreground="#FFFF7B24"
+                                   HorizontalAlignment="Right" DockPanel.Dock="Right" Margin="0,0,5,0" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Subject}" Foreground="#FFFF7B24" FontWeight="Bold" Margin="5,5,10,0" />
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap" HorizontalAlignment="Left"
+                                   Margin="5,5,0,5"
+                                   Width="350" MaxHeight="43" Foreground="White"  />
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="listBoxTradingTemplate">
+            <Border Margin="-6,0,-8,-15" BorderBrush="#FFFF7B24" BorderThickness="0,0,0,4"
+                    Background="#FF1A1A1A" Width="397" MinHeight="80">
+                <StackPanel Button.Click="CommonBtnClick" Margin="-6,-2,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="5*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*" />
+                            <ColumnDefinition Width="60*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <DockPanel Grid.Row="0" Margin="0,5,0,0">
+                            <TextBlock FontWeight="Bold" DockPanel.Dock="Left" Margin="10,0,0,0" Foreground="#FFFF7B24">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding AssetId}" Value="0">
+                                                <Setter Property="Text" Value="Item: " />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ItemId}" Value="0">
+                                                <Setter Property="Text" Value="Asset: " />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock DockPanel.Dock="Left" Foreground="White" Text="{Binding PurcaseName}"/>
+                        </DockPanel>
+                        
+                        <DockPanel Grid.Row="1" Margin="0,5,0,0">
+                            <TextBlock FontWeight="Bold" Text="From: " DockPanel.Dock="Left"
+                                       Foreground="#FFFF7B24" Margin="10,0,0,0" />
+                            <TextBlock Text="{Binding BuyerName}" Foreground="White" />
+                        </DockPanel>
+                        
+                        <DockPanel Grid.Row="0" Grid.Column="2" Margin="0,5,0,0">
+                            <TextBlock FontWeight="Bold" Text="Amount: " Foreground="#FFFF7B24" />
+                            <TextBlock Text="{Binding Amount}" Foreground="White" />
+                            <TextBlock DockPanel.Dock="Left" Foreground="White">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ItemId}" Value="0">
+                                                <Setter Property="Text" Value="%" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="1" Grid.Column="1">
+                            <TextBlock FontWeight="Bold" Text="Price: " Foreground="#FFFF7B24" />
+                            <TextBlock Text="{Binding Price, StringFormat=c}" Foreground="White" />
+                            <TextBlock DockPanel.Dock="Left" Foreground="White">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ItemId}" Value="0">
+                                                <Setter Property="Text" Value="" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding AssetId}" Value="0">
+                                                <Setter Property="Text" Value=" (pr. item)" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            </DockPanel>
+                            <DockPanel Grid.Row="2" Grid.Column="1">
+                            <TextBlock FontWeight="Bold" Foreground="#FFFF7B24" Margin="0,0,0,0">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding AssetId}" Value="0">
+                                                <Setter Property="Text" Value="Total Price: " />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock DockPanel.Dock="Left" Foreground="White" Margin="0,0,0,0">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding AssetId}" Value="0">
+                                                <Setter Property="Text" Value="{Binding TotalPrice, StringFormat=c}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DockPanel>
+
+
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="5*" />
+                            <RowDefinition Height="5*" />
+                        </Grid.RowDefinitions>
+                        <DockPanel Grid.Row="0">
+                            <TextBlock Text="{Binding Text}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="15,0,0,0"
+                                       Width="400" Foreground="White" Padding="0,0,25,0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Row="1">
+                            <TextBlock Margin="34,0,0,0" Text="Trade expiration date: " Foreground="#FFFF7B24"
+                                       HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Time, StringFormat=dd.MM.yyyy}" HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Accept}" Value="0">
+                                                <Setter Property="Foreground" Value="Green" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="1">
+                                                <Setter Property="Foreground" Value="#FFFF7B24" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="2">
+                                                <Setter Property="Foreground" Value="#FFFF7B24" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="4">
+                                                <Setter Property="Foreground" Value="#FFFF7B24" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="3">
+                                                <Setter Property="Foreground" Value="Red" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DockPanel>
+                        <DockPanel Grid.Row="2">
+                            <TextBlock x:Name="statusTrade" HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Accept}" Value="0">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Setter Property="Text" Value="" />
+                                                <Setter Property="Foreground" Value="#FFFF7B24" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="1">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Setter Property="Text" Value=" This trade was not accepted" />
+                                                <Setter Property="Foreground" Value="Red" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="2">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Setter Property="Text" Value=" Trade accepted!" />
+                                                <Setter Property="Foreground" Value="Green" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="3">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Setter Property="Text" Value=" Trade expired!" />
+                                                <Setter Property="Foreground" Value="Red" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="4">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Setter Property="Text"
+                                                        Value="Trade invalid, you do not own these assets" />
+                                                <Setter Property="Foreground" Value="Red" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="3" Width="155" HorizontalAlignment="Left" Margin="18,5,0,5">
+                            <my:SurfaceButton x:Name="yesBtn" Content="Accept" Foreground="White">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Accept}" Value="0">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="1">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="2">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="3">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="4">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </my:SurfaceButton>
+                        </DockPanel>
+
+                        <DockPanel Grid.Row="3" Width="155" HorizontalAlignment="Right" Margin="0,5,13,5">
+                            <my:SurfaceButton x:Name="noBtn" Content="Refuse" Foreground="White">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Accept}" Value="0">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="1">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="2">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="3">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Accept}" Value="4">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </my:SurfaceButton>
+                        </DockPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border BorderBrush="Black" BorderThickness="0,0,0,5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="36*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="42*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="groupid" Visibility="Collapsed" />
+            <Label Content="Messages" Background="#FFFF7B24" FontSize="18" FontWeight="Bold" />
+            <my:SurfaceListBox x:Name="listBoxMessage" ItemsSource="{Binding}" BorderBrush="Gray"
+                               BorderThickness="2,0,2,0" MinHeight="0" ItemTemplate="{DynamicResource listBoxTemplate}"
+                               VerticalAlignment="Top" Grid.Row="1" Background="#FF1A1A1A"
+                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+            <Label Content="Trades" Grid.Row="2" Background="#FFFF7B24" FontSize="18" FontWeight="Bold" />
+            <my:SurfaceListBox x:Name="listBoxTrading" ItemsSource="{Binding}" BorderBrush="Gray"
+                               BorderThickness="2,0,2,0" MinHeight="0"
+                               ItemTemplate="{DynamicResource listBoxTradingTemplate}" VerticalAlignment="Top"
+                               Grid.Row="3"
+                               Background="#FF1A1A1A" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+            <Label x:Name="lblCantAfford" Visibility="Collapsed" Content="You can not afford this!" Foreground="Red"
+                   Grid.Row="4" FontSize="12" FontWeight="Black" />
+        </Grid>
+    </Border>
+</UserControl>

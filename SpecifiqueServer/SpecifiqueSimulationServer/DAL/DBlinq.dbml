@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB" Class="DBlinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=C:\AProjects\SpecifiqueServer\SpecifiqueSimulationServer\SpecifiqueSimulationServer\DB.mdf;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30;User Instance=True" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="DBConnectionString6" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.asset" Member="assets">
+    <Type Name="asset">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="assetName" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="assetPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="assetDescription" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="asset_assetInventory" Member="assetInventories" ThisKey="Id" OtherKey="assetId" Type="assetInventory" />
+      <Association Name="asset_assetValue" Member="assetValues" ThisKey="Id" OtherKey="assetId" Type="assetValue" />
+      <Association Name="asset_itemOnAssetValue" Member="itemOnAssetValues" ThisKey="Id" OtherKey="assetId" Type="itemOnAssetValue" />
+    </Type>
+  </Table>
+  <Table Name="dbo.trade" Member="trades">
+    <Type Name="trade">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ownerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="buyerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="buyerName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="assetId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tradeText" Type="System.String" DbType="VarChar(600)" CanBeNull="true" />
+      <Column Name="tradeTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="accept" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="purchaseName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="totalPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.assetInventory" Member="assetInventories">
+    <Type Name="assetInventory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="assetId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="teamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="share" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="asset_assetInventory" Member="asset" ThisKey="assetId" OtherKey="Id" Type="asset" IsForeignKey="true" />
+      <Association Name="team_assetInventory" Member="team" ThisKey="teamId" OtherKey="Id" Type="team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.assetValue" Member="assetValues">
+    <Type Name="assetValue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="assetId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="taxCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="operatingExpenses" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="incomePerAsset" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="asset_assetValue" Member="asset" ThisKey="assetId" OtherKey="Id" Type="asset" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cashPerTeam" Member="cashPerTeams">
+    <Type Name="cashPerTeam">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cash" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="team_cashPerTeam" Member="team" ThisKey="teamId" OtherKey="Id" Type="team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.gameTime" Member="gameTimes">
+    <Type Name="gameTime">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="currentTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.item" Member="items">
+    <Type Name="item">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="itemName" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="itemPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="itemDescription" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="item_itemInventory" Member="itemInventories" ThisKey="Id" OtherKey="itemId" Type="itemInventory" />
+      <Association Name="item_itemOnAssetValue" Member="itemOnAssetValues" ThisKey="Id" OtherKey="itemId" Type="itemOnAssetValue" />
+      <Association Name="item_itemValue" Member="itemValues" ThisKey="Id" OtherKey="itemId" Type="itemValue" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemInventory" Member="itemInventories">
+    <Type Name="itemInventory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="teamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="item_itemInventory" Member="item" ThisKey="itemId" OtherKey="Id" Type="item" IsForeignKey="true" />
+      <Association Name="team_itemInventory" Member="team" ThisKey="teamId" OtherKey="Id" Type="team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemOnAssetValue" Member="itemOnAssetValues">
+    <Type Name="itemOnAssetValue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="assetId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ratio" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="asset_itemOnAssetValue" Member="asset" ThisKey="assetId" OtherKey="Id" Type="asset" IsForeignKey="true" />
+      <Association Name="item_itemOnAssetValue" Member="item" ThisKey="itemId" OtherKey="Id" Type="item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemValue" Member="itemValues">
+    <Type Name="itemValue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="taxCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="storageExpenses" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="incomePerItem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="item_itemValue" Member="item" ThisKey="itemId" OtherKey="Id" Type="item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.msg" Member="msgs">
+    <Type Name="msg">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teamFromId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="teamFromName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="teamToId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="teamToName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="parentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="msgSubject" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="msgText" Type="System.String" DbType="VarChar(600)" CanBeNull="true" />
+      <Column Name="msgTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.notific" Member="notifics">
+    <Type Name="notific">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="notificSubject" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="notificText" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="notificTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="team_notific" Member="team" ThisKey="teamId" OtherKey="Id" Type="team" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.team" Member="teams">
+    <Type Name="team">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teamName" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Association Name="team_assetInventory" Member="assetInventories" ThisKey="Id" OtherKey="teamId" Type="assetInventory" />
+      <Association Name="team_cashPerTeam" Member="cashPerTeams" ThisKey="Id" OtherKey="teamId" Type="cashPerTeam" />
+      <Association Name="team_itemInventory" Member="itemInventories" ThisKey="Id" OtherKey="teamId" Type="itemInventory" />
+      <Association Name="team_notific" Member="notifics" ThisKey="Id" OtherKey="teamId" Type="notific" />
+    </Type>
+  </Table>
+</Database>

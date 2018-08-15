@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="SurfaceApplication.UserControls.Asset"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Height="300" Width="500" xmlns:my="http://schemas.microsoft.com/surface/2008"
+             xmlns:userControls="clr-namespace:SurfaceApplication.UserControls"
+             Foreground="White">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ownersTemplate">
+            <StackPanel>
+                <DockPanel>
+                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text=": " />
+                    <TextBlock Text="{Binding Share}" />
+                    <TextBlock Text="%" />
+                </DockPanel>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Background="#FF1A1A1A">
+        <Border BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0">
+            <Image HorizontalAlignment="Left" Name="assetIcon" Stretch="Uniform" VerticalAlignment="Top"
+                   Source="/SurfaceApplication;component/Images/specifique.png" Height="100" Margin="0" />
+        </Border>
+        <TextBlock Height="52" HorizontalAlignment="Left" Margin="10,10,0,0" Name="assetNameText" Text="Paris"
+                   VerticalAlignment="Top" FontFamily="Segoe360" FontSize="32" Foreground="#FFFF7B24" />
+        <TextBlock Height="23" HorizontalAlignment="Right" Margin="0,120,14,0"
+                   Text="Owners:" VerticalAlignment="Top" FontFamily="Segoe360" FontSize="17" Width="100" />
+        <ListBox Height="121" HorizontalAlignment="Right" Margin="0,149,14,0" Name="ownersListBox"
+                 VerticalAlignment="Top"
+                 Width="100" ItemsSource="{Binding}" ItemTemplate="{DynamicResource ownersTemplate}"
+                 IsHitTestVisible="False"
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                 BorderThickness="0" Foreground="White">
+            <ListBox.Background>
+                <SolidColorBrush />
+            </ListBox.Background>
+        </ListBox>
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,89,0,0" Text="Value:"
+                   VerticalAlignment="Top" FontFamily="Segoe360" FontSize="17" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="113,89,0,0" Name="assetValueText" Text="100 000"
+                   VerticalAlignment="Top" FontFamily="Segoe360" FontSize="17" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,120,0,0" Text="Description:"
+                   VerticalAlignment="Top" FontFamily="Segoe360" FontSize="17" />
+        <!--my:SurfaceScrollViewer HorizontalAlignment="Left" Margin="12,149,0,0" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+            <TextBlock Name="assetDescriptionText" 
+                       Text="The name Paris derives from that of its earliest inhabitants, the Gaulish tribe known as the Parisii." 
+                       VerticalAlignment="Top" FontFamily="Segoe360" FontSize="17" TextWrapping="WrapWithOverflow" Width="250" />
+        </my:SurfaceScrollViewer-->
+        <my:SurfaceScrollViewer HorizontalAlignment="Left" Margin="12,149,0,0" VerticalScrollBarVisibility="Hidden"
+                                HorizontalScrollBarVisibility="Disabled">
+            <TextBlock Name="assetDescriptionText"
+                       Text="The name Paris derives from that of its earliest inhabitants, the Gaulish tribe known as the Parisii."
+                       VerticalAlignment="Top" FontFamily="Segoe360" FontSize="17" TextWrapping="WrapWithOverflow"
+                       Width="250" />
+        </my:SurfaceScrollViewer>
+
+        <!--Border BorderThickness="2" BorderBrush="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10">
+            <my:SurfaceButton Height="40" Width="40" Click="exit_Click">
+                <my:SurfaceButton.Background>
+                    <ImageBrush ImageSource="/SurfaceApplication;component/Images/exit.png" />
+                </my:SurfaceButton.Background>
+            </my:SurfaceButton>
+        </Border-->
+
+        <Border BorderThickness="2" BorderBrush="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                Margin="0,0,10,10">
+            <my:SurfaceButton Height="40" Width="40" Click="trade_Click">
+                <my:SurfaceButton.Background>
+                    <ImageBrush ImageSource="/SurfaceApplication;component/Images/trade.png" />
+                </my:SurfaceButton.Background>
+            </my:SurfaceButton>
+        </Border>
+    </Grid>
+</UserControl>
